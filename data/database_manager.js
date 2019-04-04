@@ -1,0 +1,1 @@
+/* Script for handling queries and connecting and disconnecting to database */

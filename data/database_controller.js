@@ -1,0 +1,1 @@
+/* Script for abstracting queries for database */
