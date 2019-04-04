@@ -1,5 +1,5 @@
 const port = 6722;
-const server = require('./server_handlers/server.js');
+const server = require('./server.js');
 
 server.start(port);
 

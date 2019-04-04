@@ -3,17 +3,17 @@ module.exports = {
   start: start
 }
 
-const database_controller = require('../data/database_controller.js');
+const database_controller = require('./data/database_controller.js');
 const express             = require('express');
+const path                = require('path');
 
 const app = express();
 
+app.use(express.static('public'));
 
 function start(portNr) {
   startApp(portNr);
 }
-
-app.get('/', (req, res) => res.send('hello world'));
 
 function startApp(port) {
   app.listen(port, () => console.log(`Running app on port: ${port}, starting database`));
