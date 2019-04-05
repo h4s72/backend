@@ -6,10 +6,13 @@ module.exports = {
 const database_controller = require('./data/database_controller.js');
 const express             = require('express');
 const path                = require('path');
+const user                = require('./server_handlers/user.js');
 
 const app = express();
 
 app.use(express.static('public'));
+
+app.get('/api/:user', (req, res) => user.handle(req, res))
 
 function start(portNr) {
   startApp(portNr);
