@@ -10,9 +10,12 @@ const user                = require('./server_handlers/user.js');
 
 const app = express();
 
+app.use(express.json());
 app.use(express.static('public'));
 
-app.get('/api/:user', (req, res) => user.handle(req, res))
+app.get('/api/:user', (req, res) => user.handle(req, res));
+app.post('/api/user', (req, res) => user.create(req, res));
+app.put('/api/:user', (req, res) => user.update(req, res));
 
 function start(portNr) {
   startApp(portNr);

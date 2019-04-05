@@ -2,7 +2,8 @@
 module.exports = {
   connect: connect,
   disconnect: disconnect,
-  getRow: getRow
+  getRow: getRow,
+  query: query
 }
 
 const sqlite3 = require('sqlite3').verbose();
@@ -22,7 +23,7 @@ function query(query) {
   return new Promise((resolve, reject) => {
     db.run(query, err => {
       if (err) { reject(err); }
-      else { resolve('Successfull run query to database'); }
+      else { resolve('Successful run query to database'); }
     });
   });
 }
@@ -32,6 +33,9 @@ function getRow(query) {
     db.get(query, (err, row) => {
       if (err) { 
         reject(err);
+      }
+      if (!row) {
+        reject('No such user');
       }
       resolve(row);
     })
